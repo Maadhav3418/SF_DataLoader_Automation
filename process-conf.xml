@@ -1,0 +1,44 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+   <bean id="extractWidgets" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+        	<description>Export Widgets to CSV </description>
+	        <property name="name" value="extractWidgets" />
+        	<property name="configOverrideMap">
+            	<map>
+                	<entry key="sfdc.debugMessages" value="true"/>
+                	<entry key="sfdc.endpoint" value="https://test.salesforce.com"/>
+                	<entry key="sfdc.Server host" value="https://www.salesforce.com"/>
+
+	<!-- Your login ID goes on the nextline. -->
+                	<entry key="sfdc.username" value="USERNAME"/>
+
+        <!-- Your password that was generated using encrypt.bat utility goes between the value quotes on the next line. -->
+                	<entry key="sfdc.password" value="ENCRYPTED PASSWORD"/>
+
+	<!-- Change the next line to match the path to your key file -->
+                	<entry key="process.encryptionKeyFile" value="PATH_TO\key.txt"/>
+
+                	<entry key="sfdc.timeoutSecs" value="600"/>
+                	<entry key="sfdc.useBulkApi" value="true"/>
+                	<entry key="sfdc.loadBatchSize" value="500"/>
+               		<entry key="sfdc.extractionRequestSize" value="10000"/>
+		
+	<!--  Change the next line to match the Salesforce object you with to extract -->
+			<entry key="sfdc.entity" value="OBJECT_NAME_C"/>
+
+	<!-- Change the SOQL statement in the next line to get the fields you want from the above obect -->
+                	<entry key="sfdc.extractionSOQL" value="QUERY TO GENERATE CSV"/>
+                
+			<entry key="process.operation" value="extract"/>
+                
+	<!-- Change the next line to the path and file that you wish to save the extract to.  -->
+			<entry key="dataAccess.name" value="PATH_TO_STORE_GENERATED_CSV\widgets.csv"/>
+
+                	<entry key="dataAccess.type" value="csvWrite"/>
+              	</map>
+        	</property>
+    </bean>
+
+
+</beans>

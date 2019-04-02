@@ -1,0 +1,9 @@
+Encrypt the password using encrypt.bat which is available in bin folder of dataloader installation
+
+encrypt -k key.txt -->> key to decrypt the password -->> copy this file under DataExports folder created which contains process-conf and RunExport files
+
+encrypt -e mypasswordwithtoken path_to_key.txt -->> to encrypt actual password
+
+process-conf.xml -->> config file
+
+RunExport.bat -->> batch script to run commands
